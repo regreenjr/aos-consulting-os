@@ -113,7 +113,7 @@ export function ActionsClient({ actions, engagementId }: ActionsClientProps) {
         </div>
       ) : (
         <div className="space-y-3">
-          {filteredActions.map((action) => (
+          {filteredActions.map((action: any) => (
             <ActionCard key={action.id} action={action} engagementId={engagementId} />
           ))}
         </div>

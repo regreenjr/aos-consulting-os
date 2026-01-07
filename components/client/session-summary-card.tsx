@@ -74,7 +74,7 @@ export function SessionSummaryCard({ session, summary }: SessionSummaryCardProps
               <span>Key Takeaways</span>
             </div>
             <ul className="space-y-1.5 ml-5 list-disc list-outside">
-              {summary.key_takeaways.map((takeaway, index) => (
+              {summary.key_takeaways.map((takeaway: any, index: number) => (
                 <li key={index} className="text-sm text-muted-foreground">
                   {takeaway}
                 </li>
@@ -91,7 +91,7 @@ export function SessionSummaryCard({ session, summary }: SessionSummaryCardProps
               <span>Next Steps</span>
             </div>
             <ul className="space-y-1.5 ml-5 list-disc list-outside">
-              {summary.next_steps.map((step, index) => (
+              {summary.next_steps.map((step: any, index: number) => (
                 <li key={index} className="text-sm text-muted-foreground">
                   {step}
                 </li>

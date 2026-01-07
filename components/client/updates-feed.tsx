@@ -28,7 +28,7 @@ interface UpdatesFeedProps {
 export function UpdatesFeed({ sessions }: UpdatesFeedProps) {
   return (
     <div className="space-y-4">
-      {sessions.map((session) => {
+      {sessions.map((session: any) => {
         const summary = session.session_summaries[0]
         if (!summary) return null
 
@@ -62,7 +62,7 @@ export function UpdatesFeed({ sessions }: UpdatesFeedProps) {
                     <span>Key Takeaways</span>
                   </div>
                   <ul className="space-y-1.5 ml-5">
-                    {summary.key_takeaways.slice(0, 3).map((takeaway, index) => (
+                    {summary.key_takeaways.slice(0, 3).map((takeaway: any, index: number) => (
                       <li key={index} className="text-sm text-muted-foreground">
                         {takeaway}
                       </li>

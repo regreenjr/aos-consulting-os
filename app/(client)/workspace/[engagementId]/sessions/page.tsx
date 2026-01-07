@@ -85,7 +85,7 @@ export default async function SessionsPage({
           </div>
         ) : (
           <div className="space-y-4">
-            {sessionsWithSummaries.map((session) => (
+            {sessionsWithSummaries.map((session: any) => (
               <SessionSummaryCard
                 key={session.id}
                 session={session}

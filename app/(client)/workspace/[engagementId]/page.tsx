@@ -134,7 +134,7 @@ export default async function ClientWorkspacePage({
             </div>
           ) : (
             <div className="grid gap-4 md:grid-cols-2">
-              {activeGoals.map((goal) => (
+              {activeGoals.map((goal: any) => (
                 <GoalCard key={goal.id} goal={goal} />
               ))}
             </div>
