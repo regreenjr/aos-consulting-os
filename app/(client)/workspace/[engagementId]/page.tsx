@@ -74,26 +74,26 @@ export default async function ClientWorkspacePage({
 
   // Get active goals
   const activeGoals = engagement.goals?.filter(
-    (g) => g.status === 'active' || g.status === 'in_progress'
+    (g: any) => g.status === 'active' || g.status === 'in_progress'
   ) || []
 
   // Get next scheduled session
   const upcomingSessions = engagement.sessions
-    ?.filter((s) => s.status === 'scheduled' && new Date(s.scheduled_at) > new Date())
-    .sort((a, b) => new Date(a.scheduled_at).getTime() - new Date(b.scheduled_at).getTime())
+    ?.filter((s: any) => s.status === 'scheduled' && new Date(s.scheduled_at) > new Date())
+    .sort((a: any, b: any) => new Date(a.scheduled_at).getTime() - new Date(b.scheduled_at).getTime())
 
   const nextSession = upcomingSessions?.[0]
 
   // Get recent session summaries for updates feed
   const recentSessions = engagement.sessions
-    ?.filter((s) => s.session_summaries && s.session_summaries.length > 0)
-    .sort((a, b) => new Date(b.scheduled_at).getTime() - new Date(a.scheduled_at).getTime())
+    ?.filter((s: any) => s.session_summaries && s.session_summaries.length > 0)
+    .sort((a: any, b: any) => new Date(b.scheduled_at).getTime() - new Date(a.scheduled_at).getTime())
     .slice(0, 5)
 
   // Get the latest approved proposal
   const approvedProposal = engagement.proposals
-    ?.filter((p) => p.status === 'approved' || p.status === 'sent' || p.status === 'accepted' || p.status === 'rejected')
-    .sort((a, b) => new Date(b.sent_at || 0).getTime() - new Date(a.sent_at || 0).getTime())[0]
+    ?.filter((p: any) => p.status === 'approved' || p.status === 'sent' || p.status === 'accepted' || p.status === 'rejected')
+    .sort((a: any, b: any) => new Date(b.sent_at || 0).getTime() - new Date(a.sent_at || 0).getTime())[0]
 
   return (
     <>

@@ -57,8 +57,8 @@ export default async function ClientProposalPage({
 
   // Get the most recent approved/sent proposal
   const approvedProposal = engagement.proposals
-    ?.filter((p) => p.status === 'approved' || p.status === 'sent' || p.status === 'accepted' || p.status === 'rejected')
-    .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())[0]
+    ?.filter((p: any) => p.status === 'approved' || p.status === 'sent' || p.status === 'accepted' || p.status === 'rejected')
+    .sort((a: any, b: any) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())[0]
 
   return (
     <>

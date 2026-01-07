@@ -28,7 +28,7 @@ export function ActionsClient({ actions, engagementId }: ActionsClientProps) {
   const [filter, setFilter] = useState<FilterType>('all')
 
   // Filter actions based on selected filter
-  const filteredActions = actions.filter((action) => {
+  const filteredActions = actions.filter((action: any) => {
     const now = new Date()
     const dueDate = action.due_date ? new Date(action.due_date) : null
 
@@ -53,7 +53,7 @@ export function ActionsClient({ actions, engagementId }: ActionsClientProps) {
   // Count for each filter
   const counts = {
     all: actions.length,
-    'due-soon': actions.filter((a) => {
+    'due-soon': actions.filter((a: any) => {
       const now = new Date()
       const dueDate = a.due_date ? new Date(a.due_date) : null
       return (
@@ -63,12 +63,12 @@ export function ActionsClient({ actions, engagementId }: ActionsClientProps) {
         isBefore(dueDate, addDays(now, 7))
       )
     }).length,
-    overdue: actions.filter((a) => {
+    overdue: actions.filter((a: any) => {
       const now = new Date()
       const dueDate = a.due_date ? new Date(a.due_date) : null
       return a.status !== 'completed' && dueDate && isBefore(dueDate, now)
     }).length,
-    completed: actions.filter((a) => a.status === 'completed').length,
+    completed: actions.filter((a: any) => a.status === 'completed').length,
   }
 
   return (

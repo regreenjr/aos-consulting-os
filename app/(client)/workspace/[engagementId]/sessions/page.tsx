@@ -59,12 +59,12 @@ export default async function SessionsPage({
   // Filter sessions that have summaries and are completed
   const sessionsWithSummaries = engagement.sessions
     ?.filter(
-      (s) =>
+      (s: any) =>
         s.session_summaries &&
         s.session_summaries.length > 0 &&
         (s.status === 'completed' || new Date(s.scheduled_at) < new Date())
     )
-    .sort((a, b) => new Date(b.scheduled_at).getTime() - new Date(a.scheduled_at).getTime()) || []
+    .sort((a: any, b: any) => new Date(b.scheduled_at).getTime() - new Date(a.scheduled_at).getTime()) || []
 
   return (
     <>

@@ -71,18 +71,18 @@ export default async function ProgressPage({
 
   // Calculate stats
   const totalGoals = engagement.goals?.length || 0
-  const completedGoals = engagement.goals?.filter((g) => g.status === 'completed').length || 0
-  const activeGoals = engagement.goals?.filter((g) => g.status === 'active' || g.status === 'in_progress').length || 0
+  const completedGoals = engagement.goals?.filter((g: any) => g.status === 'completed').length || 0
+  const activeGoals = engagement.goals?.filter((g: any) => g.status === 'active' || g.status === 'in_progress').length || 0
 
   const totalActions = engagement.actions?.length || 0
-  const completedActions = engagement.actions?.filter((a) => a.status === 'completed').length || 0
+  const completedActions = engagement.actions?.filter((a: any) => a.status === 'completed').length || 0
 
   const totalSessions = engagement.sessions?.length || 0
-  const completedSessions = engagement.sessions?.filter((s) => s.status === 'completed').length || 0
+  const completedSessions = engagement.sessions?.filter((s: any) => s.status === 'completed').length || 0
 
   // Create timeline events from goals, actions, and sessions
   const timelineEvents = [
-    ...(engagement.goals || []).map((goal) => ({
+    ...(engagement.goals || []).map((goal: any) => ({
       id: goal.id,
       type: 'goal' as const,
       title: goal.title,
@@ -93,7 +93,7 @@ export default async function ProgressPage({
         ? Math.round((goal.current_value / goal.target_value) * 100)
         : undefined,
     })),
-    ...(engagement.sessions || []).map((session) => ({
+    ...(engagement.sessions || []).map((session: any) => ({
       id: session.id,
       type: 'session' as const,
       title: session.title || 'Coaching Session',
@@ -102,8 +102,8 @@ export default async function ProgressPage({
       status: session.status,
     })),
     ...(engagement.actions || [])
-      .filter((action) => action.status === 'completed')
-      .map((action) => ({
+      .filter((action: any) => action.status === 'completed')
+      .map((action: any) => ({
         id: action.id,
         type: 'action' as const,
         title: action.title,
@@ -111,7 +111,7 @@ export default async function ProgressPage({
         date: action.completed_at || action.created_at,
         status: action.status,
       })),
-  ].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+  ].sort((a: any, b: any) => new Date(a.date).getTime() - new Date(b.date).getTime())
 
   return (
     <>
