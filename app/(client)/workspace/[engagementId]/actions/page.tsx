@@ -53,7 +53,7 @@ export default async function ActionsPage({
   }
 
   // Sort actions: pending first, then by due date, then completed
-  const sortedActions = engagement.actions?.sort((a, b) => {
+  const sortedActions = engagement.actions?.sort((a: any, b: any) => {
     // Completed items last
     if (a.status === 'completed' && b.status !== 'completed') return 1
     if (a.status !== 'completed' && b.status === 'completed') return -1
