@@ -25,13 +25,14 @@ export default function SignupPage() {
     setIsLoading(true)
 
     try {
-      // Sign up the user
+      // Sign up the user - database trigger will create user record
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email,
         password,
         options: {
           data: {
             full_name: fullName,
+            role: role,
           },
         },
       })
@@ -41,18 +42,6 @@ export default function SignupPage() {
       if (!authData.user) {
         throw new Error('No user data returned')
       }
-
-      // Create user record with role
-      const { error: userError } = await supabase
-        .from('users')
-        .insert({
-          id: authData.user.id,
-          email: authData.user.email!,
-          full_name: fullName,
-          role: role,
-        })
-
-      if (userError) throw userError
 
       toast.success('Account created! Please check your email to verify your account.')
       router.push('/login')
